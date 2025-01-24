@@ -3881,14 +3881,34 @@ input, select, textarea {
 
 /* Intro */
 
-	#intro {
-		background-attachment: fixed;
-		background-image: url("images/blg.jpg");
-		background-position: top right;
-		background-repeat: no-repeat;
-		background-size: 100% 100%;
-		background-color: #007bff; /* Add this for a solid blue background */
-	}
+#intro {
+	background-attachment: fixed;
+	background-image: url("images/blg.jpg");
+	background-position: top right;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-color: #007bff; /* Fallback for a solid blue background */
+	position: relative; /* Required for pseudo-element positioning */
+}
+
+#intro:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+	z-index: 1; /* Ensure the overlay appears above the image */
+}
+
+#intro * {
+	position: relative; /* Ensure text and other elements appear above the overlay */
+	z-index: 2;
+	color: rgb(255, 255, 255); /* White text for readability */
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Optional shadow for better contrast */
+}
+
 
 		#intro p {
 			font-size: 1.25em;
